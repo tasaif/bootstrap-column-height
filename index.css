@@ -1,5 +1,12 @@
-.add-border {
+.red-border {
   border-color: red;
   border-width: 2px;
   border-style: solid;
 }
+
+.green-border {
+  border-color: green;
+  border-width: 2px;
+  border-style: solid;
+}
+
