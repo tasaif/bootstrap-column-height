@@ -11,6 +11,9 @@ $(function(){
       }
       return $columns;
     }
+    function bindColumns($source, $targets){
+      console.log($source, $targets);
+    }
     function matchHeights($columns){
       var largest_height = 0;
       $columns.each(function(){
@@ -18,7 +21,9 @@ $(function(){
         if (height > largest_height) largest_height = height;
       });
       $columns.each(function(){
-        $(this).height(largest_height);
+        $column = $(this);
+        $column.height(largest_height);
+        bindColumns($column, $columns);
       });
     }
 
