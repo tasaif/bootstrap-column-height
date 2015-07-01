@@ -12,12 +12,18 @@ $(function(){
       return $columns;
     }
     function bindColumns($source, $targets){
-      console.log($source, $targets);
+      $source.on('DOMSubtreeModified', function(){
+        $targets.each(function(){
+          $(this).css('height', '');
+        });
+        matchHeights($targets);
+      });
     }
     function matchHeights($columns){
       var largest_height = 0;
       $columns.each(function(){
-        var height = $(this).height();
+        $column = $(this);
+        var height = $column.height();
         if (height > largest_height) largest_height = height;
       });
       $columns.each(function(){
