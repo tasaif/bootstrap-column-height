@@ -11,25 +11,27 @@ $(function(){
       }
       return $columns;
     }
-    function bindColumns($source, $targets){
-      $source.on('DOMSubtreeModified', function(){
-        $targets.each(function(){
-          $(this).css('height', '');
+    function bindColumns($columns){
+      $columns.each(function(){
+        $column = $(this);
+        $column.on('DOMSubtreeModified', function(){
+          $columns.each(function(){
+            matchHeights($columns);
+          });
         });
-        matchHeights($targets);
       });
     }
     function matchHeights($columns){
       var largest_height = 0;
       $columns.each(function(){
         $column = $(this);
+        $column.css('height', '');
         var height = $column.height();
         if (height > largest_height) largest_height = height;
       });
       $columns.each(function(){
         $column = $(this);
         $column.height(largest_height);
-        bindColumns($column, $columns);
       });
     }
 
@@ -37,6 +39,7 @@ $(function(){
       var $row = $(this);
       $columns = getColumns($row);
       matchHeights($columns);
+      bindColumns($columns);
     });
   })();
 });
