@@ -13,6 +13,6 @@ Makes columns in a row match the height of the content
 
 # Before/After
 <b>Before</b>
-![Before Image](/images/before.png?raw=true "Before")
+![Before Image](/images/before-1.png?raw=true "Before")
 <b>After</b>
-![After Image](/images/after.png?raw=true "After")
+![After Image](/images/after-1.png?raw=true "After")
