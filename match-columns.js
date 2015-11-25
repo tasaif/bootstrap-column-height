@@ -14,7 +14,7 @@ $(function(){
     function bindColumns($columns){
       $columns.each(function(){
         $column = $(this);
-        $column.on('DOMSubtreeModified', function(){
+        $column.on('resizeHeights', function(){
           $columns.each(function(){
             matchHeights($columns);
           });
@@ -32,14 +32,15 @@ $(function(){
       $columns.each(function(){
         $column = $(this);
         $column.height(largest_height);
+        $column.trigger('heightResized');
       });
     }
 
     $('[data-match-columns="true"]').each(function(){
       var $row = $(this);
       $columns = getColumns($row);
-      matchHeights($columns);
       bindColumns($columns);
+      $columns.trigger('resizeHeights');
     });
   })();
 });
